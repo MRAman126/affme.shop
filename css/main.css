@@ -360,6 +360,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   align-items: center;
   height: 100%;
   margin-right: 55px;
+  height: 120px;
   
 }
 
@@ -710,6 +711,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   -webkit-flex-grow: 1;
   -moz-flex-grow: 1;
   flex-grow: 1;
+  height: 112px;
 }
 
 .logo-mobile img {
