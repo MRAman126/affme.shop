@@ -138,6 +138,12 @@ textarea {
 
 }
 
+@media screen and (max-width: 768px){
+  .selector{
+    margin-left:2.5rem;
+  }
+}
+
 .head {
   margin-left: 44%;
   color: white;
