@@ -62,15 +62,21 @@
 				Online Payment
 			</a>
 		</button> -->
-		<div class="razorpay-embed-btn" data-url="https://rzp.io/l/affme-argentina-dark-t-shirt-1" data-text="Pay Now" data-color="#528FF0" data-size="large">
+		<div class="razorpay-embed-btn" data-url="https://rzp.io/l/affme-argentina-dark-t-shirt-1" data-text="Pay Now"
+			data-color="#528FF0" data-size="large">
 			<script>
-			  (function(){
-				var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-				if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-				s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['_rzp_'];
-				rzp && rzp.init && rzp.init()}})();
+				(function () {
+					var d = document; var x = !d.getElementById('razorpay-embed-btn-js')
+					if (x) {
+						var s = d.createElement('script'); s.defer = !0; s.id = 'razorpay-embed-btn-js';
+						s.src = 'https://cdn.razorpay.com/static/embed_btn/bundle.js'; d.body.appendChild(s);
+					} else {
+						var rzp = window['_rzp_'];
+						rzp && rzp.init && rzp.init()
+					}
+				})();
 			</script>
-		  </div>
+		</div>
 
 		<div style="font-size: 12.5px;margin-top: 1rem;">
 			No need to fill the form for online Payment.
@@ -87,14 +93,15 @@
 			<input name="email" type="text" class="feedback-input" placeholder="Email" required>
 			<input name="phone" type="tel" class="feedback-input" placeholder="Mobile Number" required>
 			<input name="address" type="text" class="feedback-input" placeholder="Full Address" required>
-			<select name="Jersey" id="Jersey" style=" padding:  2%; padding-left: 10%; margin-bottom: 2%;"
+			<H4 style="color: white;">Argentina Away Jersey</H4><br>
+			<!-- <select name="Jersey" id="Jersey" style=" padding:  2%; padding-left: 10%; margin-bottom: 2%;"
 				class="feedback-input">
-				<option> Selecet Jersey</option>
+				<option> Argentina Away Jersey</option>
 				<option>Argentina Dark Purple Jersey Short & Scocks</option>
 				<option>Manchester United Red Jersey Short & Scocks</option>
 				<option>Brazil Blue Jersey</option>
 				<option>Grey</option>
-			</select><br>
+			</select><br> -->
 			<select name="size" id="size" style=" padding:  2%; padding-left: 10%; margin-bottom: 2%;"
 				class="feedback-input">
 				<option> Selecet Size</option>
@@ -103,7 +110,7 @@
          <option>Brazil Blue Jersey</option>
          <option>Grey</option> -->
 			</select><br>
-			<div class="selector flex-w flex-r-m p-b-10" >
+			<div class="selector flex-w flex-r-m p-b-10">
 				<div class="size-204 flex-w flex-m respon6-next">
 					<div class="wrap-num-product flex-w m-r-20 m-tb-10">
 						<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -124,8 +131,7 @@
 
 
 
-			<input type="submit" id="s" value="Cash On Delivery" name="submit" class="COD"
-				style="margin-left:"><br><br>
+			<input type="submit" id="s" value="Cash On Delivery" name="submit" class="COD" style="margin-left:"><br><br>
 
 
 
@@ -144,13 +150,22 @@
        -->
 	<script>
 		const scriptURL = 'https://script.google.com/macros/s/AKfycbw2zNxzBkog2YjKaRRPLO7Sy9DfnFAHs0F247hSHNaZoYZ7Y_yaWXhl4TCsMun5B2AWCw/exec'
-		const form = document.forms['google-sheet']
+		const form = document.forms['google-sheet'];
 		form.addEventListener('submit', e => {
-			e.preventDefault()
+			e.preventDefault();
 			fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-				.then(Response => alert("Your Orderr is Placed"))
-				.catch(error => console.error('erroe!', error.message))
-		})
+				.then(response => {
+					if (response.ok) {
+						alert("Your Order is Placed");
+						// Redirect to the home page (index.html)
+						window.location.href = 'index.html';
+					} else {
+						console.error('Error!', response.statusText);
+					}
+				})
+				.catch(error => console.error('Error!', error.message));
+		});
+
 
 	</script>
 
