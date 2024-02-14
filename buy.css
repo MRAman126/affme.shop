@@ -138,6 +138,9 @@ textarea {
 
 }
 
+#s{
+  margin-bottom:-10%;
+}
 @media screen and (max-width: 768px){
   .selector{
     margin-left:2.5rem;
