@@ -350,7 +350,7 @@
 		<div class="container" >
 			<div class="flex-w flex-tr" >
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-					<form onsubmit="sendEmail(); reset(); return false;">
+					<form name="submit-to-google-sheet" method="post">
 						<h4 class="mtext-105 cl2 txt-center p-b-30">
 							Send Us A Message
 						</h4>
@@ -361,13 +361,39 @@
 						</div>
 
 						<div class="bor8 m-b-30">
-							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"  id="msg" placeholder="How Can We Help?"></textarea>
+							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" id="msg" placeholder="How Can We Help?"></textarea>
 						</div>
-						<div class="send">
-						<a href="https://forms.gle/iEaHYRQhcYXdioG37" style="text-decoration: none; color: rgb(82, 207, 82); font-size: x-large; background-color: black;border-radius: 10%;padding: 1%;margin-left: 24%; padding-left: 20%;padding-right: 20%;">Submit </a>
-						</div>
+						
+			<input type="submit" id="csu" value="Submit" name="submit" class="consub" >
 					</form>
+					
 				</div>
+				<script>
+					const scriptURL = 'https://script.google.com/macros/s/AKfycbzZZNQXKujOPN88G39gUs4B5VU6R65DRNfo6TBPePbWaK4_-NU4_Eekvsp-8kIw_mY3Jw/exec'
+					const form = document.forms['submit-to-google-sheet']
+				  
+					form.addEventListener('submit', e => {
+			e.preventDefault();
+			fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+				.then(response => {
+					if (response.ok) {
+						// SweetAlert for successful submission
+						Swal.fire({
+							icon: 'success',
+							title: 'Successful!',
+							text: 'Your Query Submited we will reach you soon',
+							confirmButtonText: 'OK'
+						}).then(() => {
+							// Redirect to the home page (index.html)
+							window.location.href = 'index.html';
+						});
+					} else {
+						console.error('Error!', response.statusText);
+					}
+				})
+				.catch(error => console.error('Error!', error.message));
+					});
+				  </script>
 				<script src="https://smtpjs.com/v3/smtp.js
 				"></script>
 			<!-- 	<script>
@@ -656,6 +682,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/map-custom.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>
